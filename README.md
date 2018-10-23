@@ -1,6 +1,6 @@
 # Adopt OpenJ9 for Spring Boot performance!
 
-This repostory contains the Dockerfiles for demoing the difference for Spring Boot workloads between OpenJDK with Hotspot and [Eclipse OpenJ9](https://www.eclipse.org/openj9/). We use Spring Petclinic as the examplar. The demo can be easily modified to build any git-based project by updating the Dockerfiles to clone a different repository.
+This repostory contains the Dockerfiles for demoing the difference for Spring Boot workloads between OpenJDK with Hotspot and [Eclipse OpenJ9](https://www.eclipse.org/openj9/). We use [Spring Petclinic](https://github.com/spring-projects/spring-petclinic) as the examplar. The demo can be easily modified to build any git-based project by updating the Dockerfiles to clone a different repository.
 
 To build the images:
 
@@ -28,6 +28,11 @@ docker run -p 8089:8080 --name openj9 petclinic-openjdk-openj9
 ```
 
 You can see from the `docker stats` that the `CPU %` and `MEM USAGE` are significantly lower for the `openj9` container than the `hotspot` container.
+
+You can access both instances of Petclinic as the container internal port 8080 is mapped to different host ports.
+`hotspot` - `http://localhost:8080/`
+`openj9` - `http://localhost:8089/`
+
 
 That's it!
 
