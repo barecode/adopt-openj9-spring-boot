@@ -36,8 +36,8 @@ This is best done in two new terminal windows so that all three terminals that a
 Once a container starts, you will see it in the `docker stats` window.
 
 ```
-docker run --rm -p 8080:8080 --name hotspot petclinic-openjdk-hotspot
-docker run --rm -p 8089:8080 --name openj9 petclinic-openjdk-openj9
+docker run --name hotspot -p 8080:8080 --rm petclinic-openjdk-hotspot
+docker run --name openj9 -p 8089:8080 --rm petclinic-openjdk-openj9
 ```
 
 You can see from the `docker stats` window that the `CPU %` and `MEM USAGE` of the `openj9` container are significantly lower than that of the `hotspot` container.
@@ -62,7 +62,7 @@ The Docker image is already pre-warmed as part of the Docker build (see `Dockerf
 
 Run the `petclinic-openjdk-openj9-warmed` Docker image in a new terminal window.
 
-`docker run --rm -p 8090:8080 --name warmed petclinic-openjdk-openj9-warmed`
+`docker run --name warmed -p 8090:8080 --rm petclinic-openjdk-openj9-warmed`
 
 Note that the start-up time for the Spring Boot application is faster than the other images, on average 25-50% faster.
 This will also result in a slight memory savings over the other OpenJ9 image which was not pre-warmed.
